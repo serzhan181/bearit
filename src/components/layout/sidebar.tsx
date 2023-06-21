@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const Sidebar = () => {
   return (
-    <nav className="fixed top-0 bottom-0 left-0 z-30 w-32 border-r border-border">
+    <nav className="fixed top-0 bottom-0 left-0 z-30 border-r w-sidebar border-border">
       <div className="flex flex-col items-center mt-10">
         <Link href="/">
           <Image alt="bear" src="/images/bear.png" width={60} height={80} />

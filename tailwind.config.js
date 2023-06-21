@@ -56,6 +56,12 @@ module.exports = {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
+      width: {
+        sidebar: `var(--sidebar-width)`,
+      },
+      margin: {
+        sidebar: `var(--sidebar-width)`,
+      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },

@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={inter.className}>
         <Sidebar />
-        <div className="ml-32">{children}</div>
+        <div className="ml-sidebar">{children}</div>
       </body>
     </html>
   );

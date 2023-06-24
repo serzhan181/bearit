@@ -44,14 +44,17 @@ export const Post = ({ author, content, subName, title, votes }: PostProps) => {
         </div>
 
         <div className="flex flex-col">
-          <Separator />
+          <Separator className="bg-muted-foreground" />
           <div className="flex items-center self-end gap-4 mt-2">
             <button className="flex items-center gap-1 text-sm">
               <span className="tracking-tighter text-muted-foreground">
                 share
               </span>
             </button>
-            <Separator orientation="vertical" className="h-5" />
+            <Separator
+              orientation="vertical"
+              className="h-5 bg-muted-foreground"
+            />
             <button className="flex items-center gap-1 text-sm">
               <span className="tracking-tighter text-muted-foreground">
                 1.2k comments

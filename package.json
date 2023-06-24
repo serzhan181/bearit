@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.21.10",
+    "@clerk/themes": "^1.7.5",
     "@planetscale/database": "^1.7.0",
     "@radix-ui/react-avatar": "^1.0.3",
     "@radix-ui/react-separator": "^1.0.3",

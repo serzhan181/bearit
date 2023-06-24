@@ -73,6 +73,9 @@ module.exports = {
       width: {
         sidebar: "var(--sidebar-w)",
       },
+      margin: {
+        sidebar: "var(--sidebar-w)",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

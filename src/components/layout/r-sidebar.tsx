@@ -1,4 +1,4 @@
-import { Button } from "../ui/button";
+import { Button, buttonVariants } from "../ui/button";
 import { SignInButton, SignUpButton, SignedIn, SignedOut } from "@clerk/nextjs";
 import { UserNav } from "../user-nav";
 import { Heart, Plus, Search } from "lucide-react";
@@ -9,6 +9,8 @@ import {
   TooltipTrigger,
 } from "../ui/tooltip";
 import { PropsWithChildren } from "react";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 const actions = [
   {
@@ -19,6 +21,7 @@ const actions = [
   {
     icon: <Plus />,
     title: "Create post",
+    href: "/create/post",
   },
   {
     icon: <Heart />,
@@ -47,14 +50,15 @@ export const RSidebar = () => {
             {actions.map((a) => (
               <li key={a.title}>
                 <TextTooltip text={a.title}>
-                  <Button
-                    size="icon"
-                    variant="ghost"
-                    className="rounded-full"
-                    disabled={a.disabled}
+                  <Link
+                    href={a.href || "/"}
+                    className={cn(
+                      buttonVariants({ size: "icon", variant: "ghost" }),
+                      "rounded-full"
+                    )}
                   >
                     {a.icon}
-                  </Button>
+                  </Link>
                 </TextTooltip>
               </li>
             ))}

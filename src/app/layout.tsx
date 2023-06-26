@@ -5,6 +5,7 @@ import { Sidebar } from "@/components/layout/sidebar";
 import { RSidebar } from "@/components/layout/r-sidebar";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+import { buttonVariants } from "@/components/ui/button";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,6 +32,7 @@ export default function RootLayout({
           footerActionLink: {
             color: "hsl(0 0% 98%)",
           },
+          button: buttonVariants(),
         },
       }}
     >

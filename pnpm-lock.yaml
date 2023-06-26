@@ -6,6 +6,7 @@ specifiers:
   '@planetscale/database': ^1.7.0
   '@radix-ui/react-avatar': ^1.0.3
   '@radix-ui/react-separator': ^1.0.3
+  '@radix-ui/react-slot': ^1.0.2
   '@types/node': 20.3.1
   '@types/react': 18.2.13
   '@types/react-dom': 18.2.6
@@ -32,6 +33,7 @@ dependencies:
   '@planetscale/database': 1.7.0
   '@radix-ui/react-avatar': 1.0.3_v7nsckbnkip4ww4dqloamsmv6y
   '@radix-ui/react-separator': 1.0.3_v7nsckbnkip4ww4dqloamsmv6y
+  '@radix-ui/react-slot': 1.0.2_kipdvjt52frzxcrtuwg5whlwdi
   '@types/node': 20.3.1
   '@types/react': 18.2.13
   '@types/react-dom': 18.2.6

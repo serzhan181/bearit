@@ -1,11 +1,13 @@
-import type { User, WebhookEvent } from "@clerk/nextjs/api";
+// ! This does not work idk why EVERYTHING seems to be correct, but it does not work. FIX IN THE FUTURE
+
+import type { WebhookEvent } from "@clerk/nextjs/api";
 import { Webhook } from "svix";
 import { headers } from "next/headers";
 import { env } from "@/env.mjs";
 
 const webhookSecret = env.WEBHOOK_SECRET;
 
-export async function POST(req: Request) {
+async function handler(req: Request) {
   const payload = await req.json();
   const payloadString = JSON.stringify(payload);
   const headerPayload = headers();
@@ -56,3 +58,7 @@ export async function POST(req: Request) {
     status: 201,
   });
 }
+
+export const GET = handler;
+export const POST = handler;
+export const PUT = handler;

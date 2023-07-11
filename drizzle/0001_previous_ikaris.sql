@@ -1,0 +1,1 @@
+ALTER TABLE `post` ADD `authorName` varchar(255) NOT NULL;

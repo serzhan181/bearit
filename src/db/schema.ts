@@ -38,6 +38,7 @@ export const post = mysqlTable("post", {
   title: varchar("title", { length: 255 }).notNull(),
   content: text("content"),
   authorId: varchar("authorId", { length: 255 }).notNull(),
+  authorName: varchar("authorName", { length: 255 }).notNull(),
   subId: varchar("subId", { length: 255 }).notNull(),
 
   createdAt: timestamp("createdAt").defaultNow(),

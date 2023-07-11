@@ -9,13 +9,17 @@ export const addPostToSub = async ({
   subId,
   content,
   title,
+  authorName,
 }: {
   userId: string;
   subId: string;
   content: string;
   title: string;
+  authorName: string;
 }) => {
-  await db.insert(post).values({ authorId: userId, title, subId, content });
+  await db
+    .insert(post)
+    .values({ authorId: userId, title, subId, content, authorName });
 
   revalidatePath("/");
 };

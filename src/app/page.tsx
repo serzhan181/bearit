@@ -13,7 +13,7 @@ export default async function Home() {
       {posts.map((p) => (
         <Post
           key={p.id}
-          author={p.authorId}
+          author={p.authorName}
           content={p.content || ""}
           subName={p.sub?.name || "ERROR"}
           title={p.title}

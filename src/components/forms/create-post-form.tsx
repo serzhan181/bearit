@@ -57,6 +57,7 @@ export const CreatePostForm = ({ subsOptions = [] }: CreatePostFormProps) => {
           subId: data.subId,
           userId: user.id,
           title: data.title,
+          authorName: user.username || "unknown",
         });
 
         form.reset();

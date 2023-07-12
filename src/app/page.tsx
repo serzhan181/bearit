@@ -1,4 +1,5 @@
 import { Post } from "@/components/post";
+import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { db } from "@/db";
 
@@ -16,6 +17,7 @@ export default async function Home() {
           <TabsTrigger value="feed">Feed</TabsTrigger>
           <TabsTrigger value="my_subscriptions">My subscriptions</TabsTrigger>
         </TabsList>
+        <Separator className="my-4" />
         <TabsContent value="feed">
           {posts.map((p) => (
             <Post

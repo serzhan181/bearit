@@ -3,22 +3,26 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Combobox, ComboboxOption } from "../ui/combobox";
-import { MarkdownEditor } from "../md-editor";
+import { Combobox, ComboboxOption } from "@/components/ui/combobox";
+import { MarkdownEditor } from "@/components/md-editor";
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from "../ui/form";
-import { Button } from "../ui/button";
+} from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
 import { useTransition } from "react";
 import { addPostToSub } from "@/app/_actions/post";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
-import { Input } from "../ui/input";
+import { Input } from "@/components/ui/input";
+import {
+  ComboboxWithImage,
+  ComboboxWithImageOption,
+} from "./combobox-with-image";
 
 const schema = z.object({
   subId: z
@@ -31,7 +35,7 @@ const schema = z.object({
 type Inputs = z.infer<typeof schema>;
 
 interface CreatePostFormProps {
-  subsOptions?: ComboboxOption[];
+  subsOptions?: ComboboxWithImageOption[];
 }
 
 export const CreatePostForm = ({ subsOptions = [] }: CreatePostFormProps) => {
@@ -78,7 +82,7 @@ export const CreatePostForm = ({ subsOptions = [] }: CreatePostFormProps) => {
           name="subId"
           render={({ field }) => (
             <FormItem>
-              <Combobox
+              <ComboboxWithImage
                 options={subsOptions}
                 placeholder="Select community..."
                 value={field.value}

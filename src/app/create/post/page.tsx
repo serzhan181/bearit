@@ -9,6 +9,7 @@ export default async function CreatePost() {
         subsOptions={subs.map((s) => ({
           label: s.name,
           value: s.id.toString(),
+          imageUrl: "/images/bear.png",
         }))}
       />
     </main>

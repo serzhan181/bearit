@@ -1,16 +1,24 @@
 import { ArrowBigDown, ArrowBigUp, MessageCircle } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Separator } from "./ui/separator";
+import { Post as IPost } from "@/db/schema";
+import { fromNow } from "@/lib/utils";
 
-interface PostProps {
-  subName: string;
-  author: string;
+interface PostProps extends Omit<IPost, "updatedAt" | "subId"> {
   votes: number;
-  title: string;
-  content: string;
+  subName: string;
 }
 
-export const Post = ({ author, content, subName, title, votes }: PostProps) => {
+export const Post = ({
+  authorName,
+  content,
+  subName,
+  title,
+  votes,
+  createdAt,
+}: // authorId,
+// id
+PostProps) => {
   return (
     <div className="flex gap-4 min-h-[128px] px-6 py-4 border rounded border-border bg-secondary">
       <div className="flex flex-col items-center text-secondary-foreground">
@@ -33,9 +41,11 @@ export const Post = ({ author, content, subName, title, votes }: PostProps) => {
           <div className="flex items-center gap-2 text-sm">
             <p>r/{subName}</p>
             <span className="text-muted-foreground">&#8226;</span>
-            <p className="text-muted-foreground">u/{author}</p>
+            <p className="text-muted-foreground">u/{authorName}</p>
             <span className="text-muted-foreground">&#8226;</span>
-            <p className="text-muted-foreground">3 hours ago</p>
+            <p className="text-muted-foreground">
+              {fromNow(createdAt?.toUTCString() || "")}
+            </p>
           </div>
         </div>
         <div>

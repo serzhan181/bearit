@@ -20,11 +20,14 @@ export default async function Home() {
           {posts.map((p) => (
             <Post
               key={p.id}
-              author={p.authorName}
+              authorName={p.authorName}
               content={p.content || ""}
               subName={p.sub?.name || "ERROR"}
               title={p.title}
               votes={p.votes.length}
+              id={p.id}
+              createdAt={p.createdAt}
+              authorId={p.authorId}
             />
           ))}
         </TabsContent>

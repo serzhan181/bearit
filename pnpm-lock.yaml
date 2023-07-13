@@ -27,8 +27,8 @@ specifiers:
   cmdk: ^0.2.0
   dayjs: ^1.11.9
   dotenv: ^16.3.1
-  drizzle-kit: ^0.19.2
-  drizzle-orm: ^0.27.0
+  drizzle-kit: ^0.19.5
+  drizzle-orm: ^0.27.2
   eslint: 8.43.0
   eslint-config-next: 13.4.6
   isomorphic-dompurify: ^1.6.0
@@ -76,7 +76,7 @@ dependencies:
   clsx: 1.2.1
   cmdk: 0.2.0_b2wlzab4o7ehpxv6mvz3buccci
   dayjs: 1.11.9
-  drizzle-orm: 0.27.0_x5zvu6yhqtclhr76ddvo6x3wgi
+  drizzle-orm: 0.27.2_x5zvu6yhqtclhr76ddvo6x3wgi
   eslint: 8.43.0
   eslint-config-next: 13.4.6_7yfldhli4vs6yywnkyiujhawka
   isomorphic-dompurify: 1.6.0
@@ -102,7 +102,7 @@ dependencies:
 devDependencies:
   '@types/marked': 5.0.0
   dotenv: 16.3.1
-  drizzle-kit: 0.19.2
+  drizzle-kit: 0.19.5
 
 packages:
 
@@ -204,6 +204,10 @@ packages:
     dependencies:
       csstype: 3.1.1
     dev: false
+
+  /@drizzle-team/studio/0.0.1:
+    resolution: {integrity: sha512-cHgGezy2ojBFMaU6PZyBkksgFsg2CQ8IRN4mS7WdbA/Zv6xUK6fCNmpEWS/FftbxoA4B8Z0XGnuKsaTJEZsGgA==}
+    dev: true
 
   /@esbuild-kit/core-utils/3.1.0:
     resolution: {integrity: sha512-Uuk8RpCg/7fdHSceR1M6XbSZFSuMrxcePFuGgyvsBn+u339dk5OeL4jv2EojwTN2st/unJGsVm4qHWjWNmJ/tw==}
@@ -2691,10 +2695,11 @@ packages:
       wordwrap: 1.0.0
     dev: true
 
-  /drizzle-kit/0.19.2:
-    resolution: {integrity: sha512-o+T/+Xc6hlLj2ocvGEo3kyWgTIAFjmsVK/HdBjU7gmbolmFZHv6T3lhaAsAD4mWfOX69uC7IggCmIqLq+zcM4Q==}
+  /drizzle-kit/0.19.5:
+    resolution: {integrity: sha512-eX+M4QpPLbbZwLUamCxRhS9Y98ppZLk3jew2FghKoAr7bGEC3omFIm+YPiwtrhe/alZZgrJCn/1TDTRHwo1r9w==}
     hasBin: true
     dependencies:
+      '@drizzle-team/studio': 0.0.1
       '@esbuild-kit/esm-loader': 2.5.5
       camelcase: 7.0.1
       chalk: 5.2.0
@@ -2710,8 +2715,8 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm/0.27.0_x5zvu6yhqtclhr76ddvo6x3wgi:
-    resolution: {integrity: sha512-LGiJ0icB+wQwgbSCOvAjONY8Ec6G/EDzQQP5PmUaQYeI9OqgpVKHC2T1fFIbvk5dabWsbokJ5NOciVAxriStig==}
+  /drizzle-orm/0.27.2_x5zvu6yhqtclhr76ddvo6x3wgi:
+    resolution: {integrity: sha512-ZvBvceff+JlgP7FxHKe0zOU9CkZ4RcOtibumIrqfYzDGuOeF0YUY0F9iMqYpRM7pxnLRfC+oO7rWOUH3T5oFQA==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'

@@ -17,6 +17,7 @@ export const sub = mysqlTable(
     id: serial("id").primaryKey(),
     name: varchar("name", { length: 16 }).notNull(),
     creatorId: varchar("creatorId", { length: 255 }).notNull(),
+    imageUrl: text("imageUrl"),
 
     createdAt: timestamp("createdAt").defaultNow(),
     updatedAt: timestamp("updatedAt").onUpdateNow(),
@@ -40,6 +41,7 @@ export const post = mysqlTable("post", {
   authorId: varchar("authorId", { length: 255 }).notNull(),
   authorName: varchar("authorName", { length: 255 }).notNull(),
   subId: varchar("subId", { length: 255 }).notNull(),
+  imageUrl: text("imageUrl"),
 
   createdAt: timestamp("createdAt").defaultNow(),
   updatedAt: timestamp("updatedAt").onUpdateNow(),

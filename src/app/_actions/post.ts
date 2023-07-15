@@ -1,7 +1,9 @@
 "use server";
 
+import { InputsCreatePost } from "@/components/forms/create-post-form";
 import { db } from "@/db";
 import { post } from "@/db/schema";
+import { StoredFile } from "@/types";
 import { revalidatePath } from "next/cache";
 
 export const addPostToSub = async ({
@@ -10,16 +12,20 @@ export const addPostToSub = async ({
   content,
   title,
   authorName,
-}: {
-  userId: string;
-  subId: string;
-  content: string;
-  title: string;
+  images,
+}: InputsCreatePost & {
   authorName: string;
+  userId: string;
+  images: StoredFile[] | null;
 }) => {
-  await db
-    .insert(post)
-    .values({ authorId: userId, title, subId, content, authorName });
+  await db.insert(post).values({
+    authorId: userId,
+    title,
+    subId,
+    content,
+    authorName,
+    images,
+  });
 
   revalidatePath("/");
 };

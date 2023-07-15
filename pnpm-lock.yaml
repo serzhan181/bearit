@@ -37,11 +37,13 @@ specifiers:
   next: 13.4.6
   postcss: 8.4.24
   react: 18.2.0
+  react-cropper: ^2.3.3
   react-detect-click-outside: ^1.1.7
   react-dom: 18.2.0
   react-dropzone: ^14.2.3
   react-hook-form: ^7.45.1
   react-textarea-autosize: ^8.5.0
+  sonner: ^0.6.2
   svix: ^1.5.2
   tailwind-merge: ^1.13.2
   tailwindcss: 3.3.2
@@ -85,11 +87,13 @@ dependencies:
   next: 13.4.6_biqbaboplfbrettd7655fr4n2y
   postcss: 8.4.24
   react: 18.2.0
+  react-cropper: 2.3.3_react@18.2.0
   react-detect-click-outside: 1.1.7_biqbaboplfbrettd7655fr4n2y
   react-dom: 18.2.0_react@18.2.0
   react-dropzone: 14.2.3_react@18.2.0
   react-hook-form: 7.45.1_react@18.2.0
   react-textarea-autosize: 8.5.0_kipdvjt52frzxcrtuwg5whlwdi
+  sonner: 0.6.2_biqbaboplfbrettd7655fr4n2y
   svix: 1.5.2
   tailwind-merge: 1.13.2
   tailwindcss: 3.3.2
@@ -2496,6 +2500,10 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
+  /cropperjs/1.5.13:
+    resolution: {integrity: sha512-by7jKAo73y5/Do0K6sxdTKHgndY0NMjG2bEdgeJxycbcmHuCiMXqw8sxy5C5Y5WTOTcDGmbT7Sr5CgKOXR06OA==}
+    dev: false
+
   /cross-spawn/7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
     engines: {node: '>= 8'}
@@ -4595,6 +4603,15 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
+  /react-cropper/2.3.3_react@18.2.0:
+    resolution: {integrity: sha512-zghiEYkUb41kqtu+2jpX2Ntigf+Jj1dF9ew4lAobPzI2adaPE31z0p+5TcWngK6TvmWQUwK3lj4G+NDh1PDQ1w==}
+    peerDependencies:
+      react: '>=17.0.2'
+    dependencies:
+      cropperjs: 1.5.13
+      react: 18.2.0
+    dev: false
+
   /react-detect-click-outside/1.1.7_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-dMrBZD7JW0Eh/uYNmMLTNwFj6afGYxAnc80fDSGJdjXjxJddH8ZazyMg2emyb8CAx9Hilr+r1fY+tm7O7m9eJg==}
     peerDependencies:
@@ -4915,6 +4932,16 @@ packages:
       map-obj: 4.3.0
       snake-case: 3.0.4
       type-fest: 2.19.0
+    dev: false
+
+  /sonner/0.6.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-bh4FWhYoNN481ZIW94W4e0kSLBTMGislYg2YXvDS1px1AJJz4erQe9jHV8s5pS1VMVDgfh3CslNSFLaU6Ldrnw==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /source-map-js/1.0.2:

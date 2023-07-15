@@ -19,7 +19,10 @@ export const sub = mysqlTable(
     id: serial("id").primaryKey(),
     name: varchar("name", { length: 16 }).notNull(),
     creatorId: varchar("creatorId", { length: 255 }).notNull(),
-    images: json("images").$type<StoredFile[] | null>().default(null),
+    coverImages: json("coverImages").$type<StoredFile[] | null>().default(null),
+    backgroundImages: json("backgroundImages")
+      .$type<StoredFile[] | null>()
+      .default(null),
 
     createdAt: timestamp("createdAt").defaultNow(),
     updatedAt: timestamp("updatedAt").onUpdateNow(),

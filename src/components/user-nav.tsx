@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SignOutButton, useUser } from "@clerk/nextjs";
+import Link from "next/link";
 
 export function UserNav() {
   const { user, isLoaded, isSignedIn } = useUser();
@@ -48,9 +49,11 @@ export function UserNav() {
             <User className="w-4 h-4 mr-2" />
             <span>Profile</span>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            <PlusCircle className="w-4 h-4 mr-2" />
-            <span>Create sub</span>
+          <DropdownMenuItem asChild>
+            <Link href="/create/sub">
+              <PlusCircle className="w-4 h-4 mr-2" />
+              <span>Create sub</span>
+            </Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />

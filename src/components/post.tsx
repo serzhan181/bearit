@@ -3,6 +3,9 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Separator } from "./ui/separator";
 import { Post as IPost } from "@/db/schema";
 import { fromNow } from "@/lib/utils";
+import { Carousel } from "./ui/carousel";
+import { AspectRatio } from "./ui/aspect-ratio";
+import Image from "next/image";
 
 interface PostProps extends Omit<IPost, "updatedAt" | "subId"> {
   votes: number;
@@ -16,6 +19,7 @@ export const Post = ({
   title,
   votes,
   createdAt,
+  images,
 }: // authorId,
 // id
 PostProps) => {
@@ -50,7 +54,36 @@ PostProps) => {
         </div>
         <div>
           <h4 className="font-semibold">{title}</h4>
-          <p className="text-sm text-muted-foreground">{content}</p>
+          {/* Hide text content if images are present. */}
+          {images ? (
+            <div className="mt-2 ">
+              {images.length > 1 ? (
+                <Carousel>
+                  {images.map((img) => (
+                    <AspectRatio key={img.id} ratio={16 / 9}>
+                      <Image
+                        fill
+                        className="object-contain"
+                        src={img.url}
+                        alt={img.name}
+                      />
+                    </AspectRatio>
+                  ))}
+                </Carousel>
+              ) : (
+                <AspectRatio ratio={16 / 9}>
+                  <Image
+                    fill
+                    className="object-contain"
+                    src={images[0].url}
+                    alt={images[0].name}
+                  />
+                </AspectRatio>
+              )}
+            </div>
+          ) : (
+            <p className="text-sm text-muted-foreground">{content}</p>
+          )}
         </div>
 
         <div className="flex flex-col">

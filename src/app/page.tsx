@@ -30,7 +30,7 @@ export default async function Home() {
               id={p.id}
               createdAt={p.createdAt}
               authorId={p.authorId}
-              imageUrl={p.imageUrl}
+              images={p.images}
             />
           ))}
         </TabsContent>

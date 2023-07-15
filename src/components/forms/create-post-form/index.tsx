@@ -28,6 +28,7 @@ import { FileWithPreview } from "@/types";
 import { OurFileRouter } from "@/app/api/uploadthing/core";
 import { FileDialog } from "@/components/file-dialog";
 import { isArrayOfFile } from "@/lib/utils";
+import { toast } from "sonner";
 
 const schema = z.object({
   subId: z
@@ -97,9 +98,13 @@ export const CreatePostForm = ({ subsOptions = [] }: CreatePostFormProps) => {
           images,
         });
 
+        toast.success("Post added successfully.");
+
         form.reset();
+        setFiles(null);
+
         router.push("/");
-        router.refresh(); // Workaround for the inconsistency of cache revalidation
+        router.refresh();
       } catch (err) {}
     });
   };

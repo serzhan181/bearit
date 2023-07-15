@@ -18,7 +18,7 @@ export default async function Home() {
           <TabsTrigger value="my_subscriptions">My subscriptions</TabsTrigger>
         </TabsList>
         <Separator className="my-4" />
-        <TabsContent value="feed">
+        <TabsContent value="feed" className="space-y-4">
           {posts.map((p) => (
             <Post
               key={p.id}

@@ -24,7 +24,7 @@ export const Post = ({
 // id
 PostProps) => {
   return (
-    <div className="flex gap-4 min-h-[128px] px-6 py-4 border rounded border-border bg-secondary">
+    <div className="flex gap-4 min-h-[128px] px-6 py-4 border rounded-sm shadow border-border">
       <div className="flex flex-col items-center text-secondary-foreground">
         <button>
           <ArrowBigUp className="w-8 h-8" />
@@ -35,7 +35,7 @@ PostProps) => {
         </button>
       </div>
 
-      <div className="flex flex-col w-full gap-4">
+      <div className="flex flex-col w-full">
         <div className="flex gap-2">
           <Avatar className="w-6 h-6">
             <AvatarImage src="/images/bear.png" alt={subName} />
@@ -52,7 +52,7 @@ PostProps) => {
             </p>
           </div>
         </div>
-        <div>
+        <div className="mt-2">
           <h4 className="font-semibold">{title}</h4>
           {/* Hide text content if images are present. */}
           {images ? (
@@ -86,18 +86,14 @@ PostProps) => {
           )}
         </div>
 
-        <div className="flex flex-col">
-          <Separator className="bg-muted-foreground" />
+        <div className="flex flex-col mt-2">
           <div className="flex items-center self-end gap-4 mt-2">
             <button className="flex items-center gap-1 text-sm">
               <span className="tracking-tighter text-muted-foreground">
                 share
               </span>
             </button>
-            <Separator
-              orientation="vertical"
-              className="h-5 bg-muted-foreground"
-            />
+            <Separator orientation="vertical" className="h-5 bg-muted" />
             <button className="flex items-center gap-1 text-sm">
               <span className="tracking-tighter text-muted-foreground">
                 1.2k comments

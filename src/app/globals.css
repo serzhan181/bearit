@@ -76,4 +76,11 @@
   body {
     @apply bg-background text-foreground;
   }
+  ::-moz-selection { /* Code for Firefox */
+    @apply bg-blue-800 text-white
+  }
+  
+  ::selection {
+    @apply bg-blue-800 text-white
+  }
 }

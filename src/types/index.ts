@@ -9,3 +9,7 @@ export type StoredFile = {
   name: string;
   url: string;
 };
+
+export interface PageParams<T extends object> {
+  params: T;
+}

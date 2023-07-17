@@ -24,8 +24,8 @@ export const Post = ({
 // id
 PostProps) => {
   return (
-    <div className="flex gap-4 min-h-[128px] px-6 py-4 border rounded-sm shadow border-border">
-      <div className="flex flex-col items-center text-secondary-foreground">
+    <div className="flex gap-4 min-h-[128px] p-4 border rounded-sm shadow border-border">
+      <div className="flex flex-col items-center text-secondary-foreground basis-[5%]">
         <button>
           <ArrowBigUp className="w-8 h-8" />
         </button>
@@ -35,7 +35,7 @@ PostProps) => {
         </button>
       </div>
 
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col grow">
         <div className="flex gap-2">
           <Avatar className="w-6 h-6">
             <AvatarImage src="/images/bear.png" alt={subName} />

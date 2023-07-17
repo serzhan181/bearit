@@ -13,8 +13,8 @@ module.exports = {
       padding: "2rem",
       screens: {
         mobile: "600px",
-        tablet: "900px",
-        desktop: "1200px",
+        tablet: "800px",
+        desktop: "1000px",
       },
     },
     extend: {

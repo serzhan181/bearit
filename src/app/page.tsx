@@ -9,6 +9,7 @@ export default async function Home() {
       sub: true,
       votes: true,
     },
+    orderBy: (fields, { asc, desc }) => [desc(fields.createdAt)],
   });
   return (
     <main className="container flex flex-col gap-4 mt-10">

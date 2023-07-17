@@ -27,5 +27,5 @@ export const addSub = async ({
     creatorId,
   });
 
-  revalidatePath("/");
+  revalidatePath(`/r/${name}`);
 };

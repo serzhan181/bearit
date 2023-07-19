@@ -13,8 +13,14 @@ interface SubBannerImgProps {
   image: StoredFile | null;
   subId: number;
   name: string;
+  isOwner: boolean;
 }
-export const SubBannerImg = ({ image, subId, name }: SubBannerImgProps) => {
+export const SubBannerImg = ({
+  image,
+  subId,
+  name,
+  isOwner,
+}: SubBannerImgProps) => {
   const backgroundImgRef = useRef<HTMLInputElement>(null);
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
@@ -50,7 +56,7 @@ export const SubBannerImg = ({ image, subId, name }: SubBannerImgProps) => {
     });
   };
 
-  return (
+  return isOwner ? (
     <>
       <input
         ref={backgroundImgRef}
@@ -93,5 +99,25 @@ export const SubBannerImg = ({ image, subId, name }: SubBannerImgProps) => {
         </span>
       </button>
     </>
+  ) : (
+    <PlainSubBannerImg image={image} name={name} />
+  );
+};
+
+const PlainSubBannerImg = ({
+  image,
+  name,
+}: Pick<SubBannerImgProps, "image" | "name">) => {
+  return (
+    <div className="relative w-full border border-dashed h-60 border-border">
+      {image && (
+        <Image
+          src={image.url}
+          alt={`background image of ${name}`}
+          fill
+          className="object-contain"
+        />
+      )}
+    </div>
   );
 };

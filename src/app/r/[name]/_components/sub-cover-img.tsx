@@ -13,8 +13,14 @@ interface SubCoverImgProps {
   image: StoredFile | null;
   subId: number;
   name: string;
+  isOwner: boolean;
 }
-export const SubCoverImg = ({ image, subId, name }: SubCoverImgProps) => {
+export const SubCoverImg = ({
+  image,
+  subId,
+  name,
+  isOwner,
+}: SubCoverImgProps) => {
   const coverImgRef = useRef<HTMLInputElement>(null);
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
@@ -51,7 +57,7 @@ export const SubCoverImg = ({ image, subId, name }: SubCoverImgProps) => {
     });
   };
 
-  return (
+  return isOwner ? (
     <>
       <button
         type="button"
@@ -89,5 +95,25 @@ export const SubCoverImg = ({ image, subId, name }: SubCoverImgProps) => {
         }
       />
     </>
+  ) : (
+    <PlainSubCoverImg image={image} name={name} />
+  );
+};
+
+const PlainSubCoverImg = ({
+  image,
+  name,
+}: Pick<SubCoverImgProps, "image" | "name">) => {
+  return (
+    <div className="relative overflow-hidden border border-dashed rounded-full w-28 h-28 border-border">
+      {image && (
+        <Image
+          src={image.url}
+          alt={`cover image of ${name}`}
+          fill
+          className="object-contain"
+        />
+      )}
+    </div>
   );
 };

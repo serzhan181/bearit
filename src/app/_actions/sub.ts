@@ -4,6 +4,7 @@ import { InputsCreateSub } from "@/components/forms/create-sub-form";
 import { db } from "@/db";
 import { sub } from "@/db/schema";
 import { StoredFile } from "@/types";
+import { auth } from "@clerk/nextjs";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 
@@ -39,6 +40,18 @@ export const updateSub = async ({
   backgroundImage?: StoredFile;
   coverImage?: StoredFile;
 }) => {
+  const user = auth().user;
+
+  const targetSub = await db.query.sub.findFirst({ where: eq(sub.name, name) });
+
+  if (!user) {
+    throw new Error("You have to be signed in!");
+  }
+
+  if (targetSub?.creatorId !== user.id) {
+    throw new Error("You are not the owner of this sub!");
+  }
+
   if (backgroundImage) {
     await db
       .update(sub)

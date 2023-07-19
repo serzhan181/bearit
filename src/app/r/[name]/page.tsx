@@ -6,11 +6,13 @@ import { eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
 import { SubBannerImg } from "./_components/sub-banner-img";
 import { SubCoverImg } from "./_components/sub-cover-img";
+import { auth } from "@clerk/nextjs";
 
 export default async function Subbearit({
   params,
 }: PageParams<{ name: string }>) {
   const subName = params.name;
+  const userId = auth().userId;
 
   const sub = await db.query.sub.findFirst({
     where: eq(subModel.name, subName),
@@ -18,6 +20,8 @@ export default async function Subbearit({
   if (!sub) {
     return notFound();
   }
+
+  const isOwner = userId === sub.creatorId;
 
   return (
     <>
@@ -27,6 +31,7 @@ export default async function Subbearit({
           image={sub?.backgroundImages && sub.backgroundImages[0]}
           subId={sub.id}
           name={sub.name}
+          isOwner={isOwner}
         />
       </Container>
       <Container className="mt-0">
@@ -36,6 +41,7 @@ export default async function Subbearit({
             image={sub?.coverImages && sub.coverImages[0]}
             subId={sub.id}
             name={sub.name}
+            isOwner={isOwner}
           />
           <p className="text-2xl font-semibold">r/{sub.name}</p>
         </div>

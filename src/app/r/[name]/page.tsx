@@ -7,10 +7,12 @@ import { notFound } from "next/navigation";
 import { SubBannerImg } from "./_components/sub-banner-img";
 import { SubCoverImg } from "./_components/sub-cover-img";
 import { auth } from "@clerk/nextjs";
+import { Post } from "@/components/post";
 
 export default async function Subbearit({
   params,
 }: PageParams<{ name: string }>) {
+  // ? Subbearit related
   const subName = params.name;
   const userId = auth().userId;
 
@@ -22,6 +24,18 @@ export default async function Subbearit({
   }
 
   const isOwner = userId === sub.creatorId;
+
+  // ? The subearit's posts
+  const posts = await db.query.post.findMany({
+    where: (fields, { eq }) => {
+      return eq(fields.subId, sub.id.toString());
+    },
+    with: {
+      sub: true,
+      votes: true,
+    },
+    orderBy: (fields, { desc }) => [desc(fields.createdAt)],
+  });
 
   return (
     <>
@@ -45,6 +59,21 @@ export default async function Subbearit({
           />
           <p className="text-2xl font-semibold">r/{sub.name}</p>
         </div>
+
+        {posts.map((p) => (
+          <Post
+            key={p.id}
+            authorName={p.authorName}
+            content={p.content || ""}
+            subName={p.sub?.name || "ERROR"}
+            title={p.title}
+            votes={p.votes.length}
+            id={p.id}
+            createdAt={p.createdAt}
+            authorId={p.authorId}
+            images={p.images}
+          />
+        ))}
       </Container>
     </>
   );

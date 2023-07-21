@@ -72,6 +72,7 @@ export default async function Subbearit({
             createdAt={p.createdAt}
             authorId={p.authorId}
             images={p.images}
+            subCoverImage={p.sub.coverImages ? p.sub.coverImages[0] : undefined}
           />
         ))}
       </Container>

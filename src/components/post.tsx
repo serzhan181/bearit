@@ -1,15 +1,18 @@
 import { ArrowBigDown, ArrowBigUp, MessageCircle } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Separator } from "./ui/separator";
-import { Post as IPost } from "@/db/schema";
+import { Post as IPost, Sub as ISub } from "@/db/schema";
 import { fromNow } from "@/lib/utils";
 import { Carousel } from "./ui/carousel";
 import { AspectRatio } from "./ui/aspect-ratio";
 import Image from "next/image";
+import Link from "next/link";
+import { StoredFile } from "@/types";
 
 interface PostProps extends Omit<IPost, "updatedAt" | "subId"> {
   votes: number;
   subName: string;
+  subCoverImage?: StoredFile;
 }
 
 export const Post = ({
@@ -20,6 +23,7 @@ export const Post = ({
   votes,
   createdAt,
   images,
+  subCoverImage,
 }: // authorId,
 // id
 PostProps) => {
@@ -36,9 +40,9 @@ PostProps) => {
       </div>
 
       <div className="flex flex-col grow">
-        <div className="flex gap-2">
+        <Link href={`/r/${subName}`} className="flex gap-2">
           <Avatar className="w-6 h-6">
-            <AvatarImage src="/images/bear.png" alt={subName} />
+            <AvatarImage src={subCoverImage?.url} alt={subName} />
             <AvatarFallback>{subName[0]}</AvatarFallback>
           </Avatar>
 
@@ -51,9 +55,15 @@ PostProps) => {
               {fromNow(createdAt?.toUTCString() || "")}
             </p>
           </div>
-        </div>
+        </Link>
         <div className="mt-2">
-          <h4 className="font-semibold">{title}</h4>
+          <Link
+            href={`/r/${subName}/${"SLUG_LINK_HERE"}`}
+            target="_blank"
+            className="font-semibold"
+          >
+            {title}
+          </Link>
           {/* Hide text content if images are present. */}
           {images ? (
             <div className="mt-2 ">
@@ -95,9 +105,13 @@ PostProps) => {
             </button>
             <Separator orientation="vertical" className="h-5 bg-muted" />
             <button className="flex items-center gap-1 text-sm">
-              <span className="tracking-tighter text-muted-foreground">
+              <Link
+                href={`/r/${subName}/${"SLUG_LINK_HERE"}`}
+                target="_blank"
+                className="tracking-tighter text-muted-foreground"
+              >
                 1.2k comments
-              </span>
+              </Link>
             </button>
           </div>
         </div>

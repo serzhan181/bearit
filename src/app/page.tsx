@@ -32,6 +32,9 @@ export default async function Home() {
               createdAt={p.createdAt}
               authorId={p.authorId}
               images={p.images}
+              subCoverImage={
+                p.sub.coverImages ? p.sub.coverImages[0] : undefined
+              }
             />
           ))}
         </TabsContent>

@@ -6,6 +6,7 @@ import { RSidebar } from "@/components/layout/r-sidebar";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import { buttonVariants } from "@/components/ui/button";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -39,6 +40,7 @@ export default function RootLayout({
       <html lang="en" className="dark">
         <body className={inter.className}>
           <Sidebar />
+          <Toaster />
           <div className="mx-sidebar">{children}</div>
           <RSidebar />
         </body>

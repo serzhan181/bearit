@@ -109,7 +109,7 @@ export function MarkdownEditor({
               const { code, metaKey } = e;
               if (code === "Enter" && metaKey) onTriggerSubmit?.();
             }}
-            className="block w-full px-4 py-2 border rounded shadow-sm border-border bg-secondary focus:ring-ring focus:outline-none"
+            className="block w-full px-4 py-2 border rounded shadow-sm border-border bg-accent focus:ring-ring focus:outline-none"
             minRows={minRows}
           />
         </TextareaMarkdown.Wrapper>

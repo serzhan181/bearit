@@ -9,10 +9,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { StoredFile } from "@/types";
 
-interface PostProps extends Omit<IPost, "updatedAt" | "subId"> {
+export interface PostProps
+  extends Omit<IPost, "updatedAt" | "subId" | "createdAt"> {
   votes: number;
-  subName: string;
+  subName?: string;
   subCoverImage?: StoredFile;
+  createdAt?: string;
 }
 
 export const Post = ({
@@ -43,7 +45,7 @@ PostProps) => {
         <Link href={`/r/${subName}`} className="flex gap-2">
           <Avatar className="w-6 h-6">
             <AvatarImage src={subCoverImage?.url} alt={subName} />
-            <AvatarFallback>{subName[0]}</AvatarFallback>
+            <AvatarFallback>{subName ? subName[0] : "U"}</AvatarFallback>
           </Avatar>
 
           <div className="flex items-center gap-2 text-sm">
@@ -51,9 +53,7 @@ PostProps) => {
             <span className="text-muted-foreground">&#8226;</span>
             <p className="text-muted-foreground">u/{authorName}</p>
             <span className="text-muted-foreground">&#8226;</span>
-            <p className="text-muted-foreground">
-              {fromNow(createdAt?.toUTCString() || "")}
-            </p>
+            <p className="text-muted-foreground">{fromNow(createdAt || "")}</p>
           </div>
         </Link>
         <div className="mt-2">

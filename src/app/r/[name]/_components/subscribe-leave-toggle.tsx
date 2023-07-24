@@ -21,7 +21,7 @@ export const SubscribeLeaveToggle = ({
           {isSubscribed ? (
             <Button variant="outline">Leave</Button>
           ) : (
-            <Button variant="secondary">Join</Button>
+            <Button>Join</Button>
           )}
         </>
       )}

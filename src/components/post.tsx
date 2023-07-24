@@ -31,11 +31,11 @@ PostProps) => {
     <div className="flex gap-4 min-h-[128px] p-4 border rounded-sm shadow border-border">
       <div className="flex flex-col items-center text-secondary-foreground basis-[5%]">
         <button>
-          <ArrowBigUp className="w-8 h-8" />
+          <ArrowBigUp className="w-8 h-8 text-primary" />
         </button>
-        <span className="text-sm">{votes}</span>
+        <span className="text-sm text-primary">{votes}</span>
         <button>
-          <ArrowBigDown className="w-8 h-8" />
+          <ArrowBigDown className="w-8 h-8 text-primary" />
         </button>
       </div>
 

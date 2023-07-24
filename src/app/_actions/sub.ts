@@ -4,7 +4,7 @@ import { InputsCreateSub } from "@/components/forms/create-sub-form";
 import { db } from "@/db";
 import { sub } from "@/db/schema";
 import { StoredFile } from "@/types";
-import { auth } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/app-beta";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 
@@ -65,5 +65,29 @@ export const updateSub = async ({
       .where(eq(sub.name, name));
   }
 
-  revalidatePath(`/r/${name}`);
+  // revalidatePath(`/r/${name}`);
 };
+
+// ! https://stackoverflow.com/questions/76259396/invariant-method-expects-to-have-requestasyncstorage-none-available
+// export const subscribeToSub = async (subId: number) => {
+// const user = auth().user;
+// if (!user) {
+//   throw new Error("You are not logged in!");
+// }
+
+// console.log("JUST A FUCKING CONSOLE LOG, CAN YOU DO THAT U SCUMBAG??!");
+
+// user.id;
+// const subsriptionExists = await db.query.subscription.findFirst({
+//   where: (fields, { and }) =>
+//     and(eq(fields.subId, subId.toString()), eq(fields.userId, user.id)),
+// });
+
+// if (subsriptionExists) {
+//   throw new Error("You are already subscribed brotha chill out.");
+// }
+
+// await db
+//   .insert(subscription)
+//   .values({ subId: subId.toString(), userId: user.id });
+// };

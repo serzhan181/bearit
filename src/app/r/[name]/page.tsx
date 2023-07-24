@@ -8,6 +8,7 @@ import { SubBannerImg } from "./_components/sub-banner-img";
 import { SubCoverImg } from "./_components/sub-cover-img";
 import { auth } from "@clerk/nextjs";
 import { Post } from "@/components/post";
+import { SubscribeLeaveToggle } from "./_components/subscribe-leave-toggle";
 
 export default async function Subbearit({
   params,
@@ -22,6 +23,19 @@ export default async function Subbearit({
   if (!sub) {
     return notFound();
   }
+  let subscription;
+
+  if (userId) {
+    subscription = await db.query.subscription.findFirst({
+      where: (fields, { and, eq }) =>
+        and(
+          eq(fields.subId, sub.id.toString()),
+          eq(fields.userId, userId.toString())
+        ),
+    });
+  }
+
+  const isSubscribed = !!subscription;
 
   const isOwner = userId === sub.creatorId;
 
@@ -49,7 +63,7 @@ export default async function Subbearit({
         />
       </Container>
       <Container className="mt-0">
-        <div className="flex items-center gap-4 px-2 py-4 bg-accent/30">
+        <div className="flex items-center gap-4 px-4 py-4 bg-accent/30">
           {/* SubCoverImg */}
           <SubCoverImg
             image={sub?.coverImages && sub.coverImages[0]}
@@ -58,6 +72,13 @@ export default async function Subbearit({
             isOwner={isOwner}
           />
           <p className="text-2xl font-semibold">r/{sub.name}</p>
+          <div className="ml-auto">
+            <SubscribeLeaveToggle
+              isOwner={isOwner}
+              isSubscribed={isSubscribed}
+              subId={sub.id}
+            />
+          </div>
         </div>
 
         {posts.map((p) => (

@@ -10,9 +10,10 @@ import { Post, PostProps } from "./post";
 import { Sub, Vote } from "@/db/schema";
 import { Loader2 } from "lucide-react";
 
-interface ExtendedPost extends Omit<PostProps, "votes"> {
+interface ExtendedPost extends Omit<PostProps, "votes" | "createdAt"> {
   votes: Vote[];
   sub: Sub;
+  createdAt?: Date | null | string;
 }
 
 interface PostFeedProps {
@@ -77,7 +78,7 @@ export const PostFeed = ({ subName, initialPosts }: PostFeedProps) => {
                 title={p.title}
                 votes={p.votes.length}
                 id={p.id}
-                createdAt={p.createdAt}
+                createdAt={p.createdAt?.toString()}
                 authorId={p.authorId}
                 images={p.images}
                 subCoverImage={
@@ -97,7 +98,7 @@ export const PostFeed = ({ subName, initialPosts }: PostFeedProps) => {
                 title={p.title}
                 votes={p.votes.length}
                 id={p.id}
-                createdAt={p.createdAt}
+                createdAt={p.createdAt?.toString()}
                 authorId={p.authorId}
                 images={p.images}
                 subCoverImage={

@@ -11,6 +11,7 @@ export default async function Home() {
       sub: true,
       votes: true,
     },
+
     orderBy: (fields, { desc }) => [desc(fields.createdAt)],
     limit: POSTS_LIMIT_PER_PAGE,
   });
@@ -23,8 +24,6 @@ export default async function Home() {
         </TabsList>
         <Separator className="my-4" />
         <TabsContent value="feed">
-          {/* TODO: Change later (createdAt field is complaining) */}
-          {/* @ts-ignore */}
           <PostFeed initialPosts={posts} />
         </TabsContent>
         <TabsContent value="my_subscriptions">

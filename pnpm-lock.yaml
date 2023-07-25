@@ -24,6 +24,7 @@ specifiers:
   '@types/react': 18.2.13
   '@types/react-dom': 18.2.6
   '@uploadthing/react': ^5.0.0
+  '@upstash/redis': ^1.22.0
   autoprefixer: 10.4.14
   axios: ^1.4.0
   class-variance-authority: ^0.6.0
@@ -81,6 +82,7 @@ dependencies:
   '@types/react': 18.2.13
   '@types/react-dom': 18.2.6
   '@uploadthing/react': 5.0.0_6ya4wl5szl2xhs6iyokgc4gkny
+  '@upstash/redis': 1.22.0
   autoprefixer: 10.4.14_postcss@8.4.24
   axios: 1.4.0
   class-variance-authority: 0.6.0_typescript@5.1.3
@@ -2149,6 +2151,14 @@ packages:
       zod: 3.21.4
     dev: false
 
+  /@upstash/redis/1.22.0:
+    resolution: {integrity: sha512-sXoJDoEqqik0HbrNE7yRWckOySEFsoBxfRdCgOqkc0w6py19ZZG50SpGkDDEUXSnBqP8VgGYXhWAiBpqxrt5oA==}
+    dependencies:
+      isomorphic-fetch: 3.0.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
   /abab/2.0.6:
     resolution: {integrity: sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==}
     dev: false
@@ -3989,6 +3999,15 @@ packages:
       - canvas
       - supports-color
       - utf-8-validate
+    dev: false
+
+  /isomorphic-fetch/3.0.0:
+    resolution: {integrity: sha512-qvUtwJ3j6qwsF3jLxkZ72qCgjMysPzDfeV240JHiGZsANBYd+EEuu35v7dfrJ9Up0Ak07D7GGSkGhCHTqg/5wA==}
+    dependencies:
+      node-fetch: 2.6.12
+      whatwg-fetch: 3.6.2
+    transitivePeerDependencies:
+      - encoding
     dev: false
 
   /jiti/1.18.2:

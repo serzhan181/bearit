@@ -90,7 +90,7 @@ export default async function Subbearit({
             title={p.title}
             votes={p.votes.length}
             id={p.id}
-            createdAt={p.createdAt}
+            createdAt={p.createdAt?.toUTCString()}
             authorId={p.authorId}
             images={p.images}
             subCoverImage={p.sub.coverImages ? p.sub.coverImages[0] : undefined}

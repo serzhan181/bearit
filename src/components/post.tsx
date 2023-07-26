@@ -1,13 +1,16 @@
 import { ArrowBigDown, ArrowBigUp, MessageCircle } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Separator } from "./ui/separator";
-import { Post as IPost, Sub as ISub } from "@/db/schema";
+import { Post as IPost, Sub as ISub, Vote } from "@/db/schema";
 import { fromNow } from "@/lib/utils";
 import { Carousel } from "./ui/carousel";
 import { AspectRatio } from "./ui/aspect-ratio";
 import Image from "next/image";
 import Link from "next/link";
 import { StoredFile } from "@/types";
+import { PostVoteClient } from "./post-vote-client";
+
+type PartialVote = Pick<Vote, "type">;
 
 export interface PostProps
   extends Omit<IPost, "updatedAt" | "subId" | "createdAt"> {
@@ -15,6 +18,7 @@ export interface PostProps
   subName?: string;
   subCoverImage?: StoredFile;
   createdAt?: string;
+  currentVote?: PartialVote;
 }
 
 export const Post = ({
@@ -26,20 +30,18 @@ export const Post = ({
   createdAt,
   images,
   subCoverImage,
+  currentVote,
+  id,
 }: // authorId,
 // id
 PostProps) => {
   return (
     <div className="flex gap-4 min-h-[128px] p-4 border rounded-sm shadow border-border">
-      <div className="flex flex-col items-center text-secondary-foreground basis-[5%]">
-        <button>
-          <ArrowBigUp className="w-8 h-8 text-primary" />
-        </button>
-        <span className="text-sm text-primary">{votes}</span>
-        <button>
-          <ArrowBigDown className="w-8 h-8 text-primary" />
-        </button>
-      </div>
+      <PostVoteClient
+        postId={id}
+        initialVote={currentVote?.type}
+        initialVotesAmt={votes}
+      />
 
       <div className="flex flex-col grow">
         <Link href={`/r/${subName}`} className="flex gap-2">

@@ -66,11 +66,13 @@ export const PostFeed = ({ subName, initialPosts }: PostFeedProps) => {
         }, 0);
 
         const curVote = p.votes.find((v) => v.userId === session?.user.id);
+        p.id;
 
         if (idx === posts.length - 1) {
           return (
             <li key={p.id} ref={ref}>
               <Post
+                currentVote={curVote}
                 key={p.id}
                 authorName={p.authorName}
                 content={p.content || ""}

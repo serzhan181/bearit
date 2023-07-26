@@ -3,7 +3,7 @@
 import axios from "axios";
 import { useEffect, useRef } from "react";
 import { useIntersection } from "@mantine/hooks";
-import { useSession } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs/app-beta/client";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { POSTS_LIMIT_PER_PAGE } from "@/config";
 import { Post, PostProps } from "./post";
@@ -28,7 +28,7 @@ export const PostFeed = ({ subName, initialPosts }: PostFeedProps) => {
     threshold: 1,
   });
 
-  const { session } = useSession();
+  const session = useUser();
 
   const { data, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
     ["infinite-query"],
@@ -65,8 +65,7 @@ export const PostFeed = ({ subName, initialPosts }: PostFeedProps) => {
           return acc;
         }, 0);
 
-        const curVote = p.votes.find((v) => v.userId === session?.user.id);
-        p.id;
+        const curVote = p.votes.find((v) => v.userId === session?.user?.id);
 
         if (idx === posts.length - 1) {
           return (
@@ -93,6 +92,7 @@ export const PostFeed = ({ subName, initialPosts }: PostFeedProps) => {
           return (
             <li key={p.id}>
               <Post
+                currentVote={curVote}
                 key={p.id}
                 authorName={p.authorName}
                 content={p.content || ""}

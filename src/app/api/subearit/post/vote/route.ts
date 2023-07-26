@@ -61,10 +61,10 @@ export async function PATCH(req: Request) {
           id: postToVote.id,
           title: postToVote.title,
           currentVote: null,
-          createdAt: postToVote.createdAt,
+          createdAt: postToVote.createdAt?.toUTCString() || null,
         };
 
-        await redis.hset(`post:${post.id}`, cachePaylaod);
+        await redis.hset(`post:${postToVote.id}`, cachePaylaod);
       }
 
       return new Response("OK");
@@ -90,7 +90,7 @@ export async function PATCH(req: Request) {
         id: postToVote.id,
         title: postToVote.title,
         currentVote: null,
-        createdAt: postToVote.createdAt,
+        createdAt: postToVote.createdAt?.toUTCString() || null,
       };
 
       await redis.hset(`post:${post.id}`, cachePaylaod);

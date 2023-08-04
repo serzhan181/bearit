@@ -4,7 +4,7 @@ import { InputsCreateSub } from "@/components/forms/create-sub-form";
 import { db } from "@/db";
 import { sub } from "@/db/schema";
 import { StoredFile } from "@/types";
-import { auth } from "@clerk/nextjs/app-beta";
+import { currentUser } from "@clerk/nextjs/app-beta";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 
@@ -40,7 +40,7 @@ export const updateSub = async ({
   backgroundImage?: StoredFile;
   coverImage?: StoredFile;
 }) => {
-  const user = auth().user;
+  const user = await currentUser().user;
 
   const targetSub = await db.query.sub.findFirst({ where: eq(sub.name, name) });
 

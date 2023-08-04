@@ -40,7 +40,7 @@ export const updateSub = async ({
   backgroundImage?: StoredFile;
   coverImage?: StoredFile;
 }) => {
-  const user = await currentUser().user;
+  const user = await currentUser();
 
   const targetSub = await db.query.sub.findFirst({ where: eq(sub.name, name) });
 

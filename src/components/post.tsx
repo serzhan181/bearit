@@ -8,6 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { StoredFile } from "@/types";
 import { PostVoteClient } from "./post-vote-client";
+import { markdownToHtml } from "@/lib/editor";
 
 type PartialVote = Pick<Vote, "type">;
 
@@ -125,7 +126,14 @@ export const PostBody = ({
             )}
           </div>
         ) : (
-          <p className="text-sm text-muted-foreground">{content}</p>
+          <div className="text-sm text-muted-foreground">
+            <span
+              className="prose max-w-none"
+              dangerouslySetInnerHTML={{
+                __html: markdownToHtml(content || ""),
+              }}
+            />
+          </div>
         )}
       </div>
 
